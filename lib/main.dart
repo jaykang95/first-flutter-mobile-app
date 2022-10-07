@@ -6,17 +6,6 @@ void main() {
   runApp(const MyApp());
 }
 
-bool _iconBool = false;
-
-IconData _iconLight = Icons.wb_sunny;
-IconData _iconDark = Icons.nightlight;
-
-ThemeData _lightTheme =
-    ThemeData(primarySwatch: Colors.amber, brightness: Brightness.dark);
-
-ThemeData _darkTheme =
-    ThemeData(primarySwatch: Colors.red, brightness: Brightness.dark);
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -24,11 +13,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: _iconBool ? _darkTheme : _lightTheme,
+      theme:
+          ThemeData(primarySwatch: Colors.amber, brightness: Brightness.light),
       home: const RootPage(),
     );
   }
 }
+
+bool _iconBool = false;
+
+IconData _iconLight = Icons.wb_sunny;
+IconData _iconDark = Icons.nightlight;
 
 class RootPage extends StatefulWidget {
   const RootPage({super.key});
@@ -46,6 +41,7 @@ class _RootPageState extends State<RootPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: _iconBool ? Colors.black45 : Colors.white,
       appBar: AppBar(
         title: const Text('Flutter'),
       ),
